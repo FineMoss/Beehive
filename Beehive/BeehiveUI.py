@@ -64,16 +64,21 @@ class Application(Frame):
         # Handles possible errors in the Entry Fields
         lines = []
         properDate = self.isProperDate(targetDate)
+
         if os.path.isdir(currentPath):
             if os.path.isdir(targetPath):
                 if properDate[0]:
-                    # Runs the Archive Report if no Errors
-                    reportName = Archiver.runReport(currentPath, targetPath, properDate[1])
-                    report = open(reportName, 'r')
-                    lines = report.read()
-                    report.close()
-                    self.lockFields()
-        # Prints Error codes to the UI
+                    try:
+                        # Runs the Archive Report if no Errors
+                        reportName = Archiver.runReport(currentPath, targetPath, properDate[1])
+                        report = open(reportName, 'r')
+                        lines = report.read()
+                        report.close()
+                        self.lockFields()
+
+        # Prints Error codes to the UI    
+                    except:
+                        lines.append("ERROR: Archive Report Failed")
                 else:
                     lines.append("ERROR: Invalid Date")
             else:
@@ -99,16 +104,21 @@ class Application(Frame):
         # Handles possible errors in the Entry Fields
         lines = []
         properDate = self.isProperDate(targetDate)
+
         if os.path.isdir(currentPath):
             if os.path.isdir(targetPath):
                 if properDate[0]:
-                    # Runs the Archive Report if no Errors
-                    reportName = Archiver.archive(currentPath, targetPath, properDate[1])
-                    report = open(reportName, 'r')
-                    lines = report.read()
-                    report.close()
-                    self.unlockFields()
-        # Prints Error codes to the UI
+                    try:
+                        # Runs the Archive Report if no Errors
+                        reportName = Archiver.archive(currentPath, targetPath, properDate[1])
+                        report = open(reportName, 'r')
+                        lines = report.read()
+                        report.close()
+                        self.unlockFields()
+
+         # Prints Error codes to the UI
+                    except:
+                        lines.append("ERROR: Archived Failed")
                 else:
                     lines.append("ERROR: Invalid Date")
             else:
@@ -243,6 +253,7 @@ class Application(Frame):
         self.cancelButton["state"]   = "disabled"
 
         self.cancelButton.grid(row = 7, column = 1)
+        
 
         # # Browse Button
         # self.browseButton            = Button(self)
