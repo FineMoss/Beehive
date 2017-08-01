@@ -10,47 +10,49 @@ import shutil
 
 def runReport(currentPath, targetPath, targetDate):
 
-	# Open Report
-	currentDate  = str(datetime.datetime.now())
-	name = "temp/"+currentDate[0:10]+"-"+currentDate[11:13]+"-"+currentDate[14:16]+"-"+currentDate[17:19]+".txt"
-	report = open(name, 'w')
+    if not os.path.isdir("Reports"):
+        os.makedirs("Reports")
+
+    # Open Report   
+    name = "Reports/temp.txt"
+    report = open(name, 'w')
 
 
-	# running count of total files moved
-	count = 0
-	# iterate through all directories in currentPath
-	for dirPath, dirs, files in os.walk('.\\'+currentPath):	
+    # running count of total files moved
+    count = 0
+    # iterate through all directories in currentPath
+    for dirPath, dirs, files in os.walk('.\\'+currentPath): 
 
-		# iterate through all files in all directories in currentPath
-		for item in os.listdir(dirPath):
-			# update file path
-			filePath = dirPath+'\\'+item
+        # iterate through all files in all directories in currentPath
+        for item in os.listdir(dirPath):
+            # update file path
+            filePath = dirPath+'\\'+item
 
-			# if it is a file
-			if os.path.isfile(filePath):
-				# get date last modified
-				t = os.path.getmtime(filePath)
-				modDate  = str(datetime.datetime.fromtimestamp(t))
-				modYear  = int(modDate[0:4])
-				modMonth = int(modDate[5:7])
-				modDay   = int(modDate[8:10])
-				modDate  = datetime.date(modYear, modMonth, modDay).isoformat()
+            # if it is a file
+            if os.path.isfile(filePath):
+                # get date last modified
+                t = os.path.getmtime(filePath)
+                modDate  = str(datetime.datetime.fromtimestamp(t))
+                modYear  = int(modDate[0:4])
+                modMonth = int(modDate[5:7])
+                modDay   = int(modDate[8:10])
+                modDate  = datetime.date(modYear, modMonth, modDay).isoformat()
 
-				# if date last modified was longer than specified date
-				if modDate < targetDate:
-					# increment counter
-					count+=1
-					# Add to report
-					report.write(filePath+"\n")
+                # if date last modified was longer than specified date
+                if modDate < targetDate:
+                    # increment counter
+                    count+=1
+                    # Add to report
+                    report.write(filePath+"\n")
 
-	
-	# total files moved
-	report.write("Number of Files: "+str(count))
 
-	# Close Report
-	report.close()
+    # total files moved
+    report.write("Number of Files: "+str(count))
 
-	return (name)
+    # Close Report
+    report.close()
+
+    return (name)
 
 
 
@@ -69,9 +71,18 @@ def rename(newPath2):
 
 def archive(currentPath, targetPath, targetDate):
 
+    if not os.path.isdir("Reports"):
+        os.makedirs("Reports")
+
     # Open Report
     currentDate  = str(datetime.datetime.now())
-    name = "Reports/"+currentDate[0:10]+"-"+currentDate[11:13]+"-"+currentDate[14:16]+"-"+currentDate[17:19]+".txt"
+
+    splitDate = currentDate.split("-")
+    splitDay  = splitDate[2].split(" ")
+    splitTime = splitDay[1].split(":")
+    splitSec  = splitTime[2].split(".")
+
+    name = "Reports/"+splitDate[1]+"-"+splitDay[0]+"-"+splitDate[0]+"--"+splitTime[0]+"-"+splitTime[1]+"-"+splitSec[0]+".txt"
     report = open(name, 'w')
 
 
@@ -122,7 +133,7 @@ def archive(currentPath, targetPath, targetDate):
                     # move file to archive directory
                     shutil.move(filePath, newPath2)
 
-    
+
     # total files moved
     report.write("Number of Files Moved: "+str(count))
 
@@ -134,5 +145,7 @@ def archive(currentPath, targetPath, targetDate):
 
 
 def clearTempFiles():
-    for item in os.listdir("temp"):
-        os.remove("temp/"+item)
+    # for item in os.listdir("temp"):
+    #     os.remove("temp/"+item)
+    if os.path.isfile("Reports/temp.txt"):
+        os.remove("Reports/temp.txt")

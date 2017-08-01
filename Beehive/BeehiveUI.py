@@ -56,7 +56,7 @@ class Application(Frame):
 
     def archive(self):
 
-    	# Gets info from UI Fields
+        # Gets info from UI Fields
         currentPath = str(self.currentEntry.get())
         targetPath  = str(self.targetEntry.get())
         targetDate  = str(self.dateEntry.get())
@@ -85,7 +85,7 @@ class Application(Frame):
                 lines.append("ERROR: Invalid Archive Location")
         else:
             lines.append("ERROR: Invalid Folder to be Archived")
-    	
+        
         # Populates the textField
         self.textField["state"] = "normal"
         self.textField.delete("1.0", "end")
@@ -157,7 +157,7 @@ class Application(Frame):
 
     def browse(self):
 
-    	self.file = tkinter.filedialog.askopenfile(title="Browse for Location", mode = "r")
+        self.file = tkinter.filedialog.askopenfile(title="Browse for Location", mode = "r")
 
 
 
@@ -165,7 +165,7 @@ class Application(Frame):
 
     def createWidgets(self):
 
-    	# Quit Button
+        # Quit Button
         self.QUIT            = Button(self)
         self.QUIT["text"]    = "QUIT"
         self.QUIT["fg"]      = "red"
@@ -296,5 +296,3 @@ app.master.maxsize(900, 488)
 
 # Run the UI object
 app.mainloop()
-# Destroy the UI object
-root.destroy()
