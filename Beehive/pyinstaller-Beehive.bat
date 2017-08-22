@@ -1,0 +1,1 @@
+pyinstaller BeehiveUI.py --clean --name Beehive --icon flower.ico --add-data flower.ico;. --onefile --noconsole

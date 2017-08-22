@@ -6,6 +6,7 @@ from tkinter import *
 import tkinter.filedialog
 import Archiver
 import os
+import sys
 import datetime
 
 
@@ -290,8 +291,21 @@ app = Application(master=root)
 
 # Main window setup
 app.master.title("Beehive Version 1.0")
+
 app.master.minsize(900, 488)
 app.master.maxsize(900, 488)
+
+# Adds the icon to the application
+frozen = 'not'
+if getattr(sys, 'frozen', False):
+        # we are running in a bundle
+        frozen = 'ever so'
+        bundle_dir = sys._MEIPASS
+else:
+        # we are running in a normal Python environment
+        bundle_dir = os.path.dirname(os.path.abspath(__file__))
+
+app.master.iconbitmap(str(bundle_dir)+"/flower.ico")
 
 
 # Run the UI object
