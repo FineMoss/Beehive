@@ -161,9 +161,6 @@ class Application(Frame):
         self.file = tkinter.filedialog.askopenfile(title="Browse for Location", mode = "r")
 
 
-
-
-
     def createWidgets(self):
 
         # Quit Button
