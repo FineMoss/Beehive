@@ -118,7 +118,12 @@ class Application(Frame):
 
 
     def clear(self):
-        print("TODO: View.clear()")
+        self.current_entry.delete("0", "end")
+        self.target_entry.delete("0", "end")
+        self.date_entry.delete("0", "end")
+        self.text_field["state"] = "normal"
+        self.text_field.delete("1.0", "end")
+        self.text_field["state"] = "disabled"
 
 
     def confirm(self):
