@@ -114,16 +114,16 @@ class Application(Frame):
 
 
     def archive(self):
-        c.hi()
+        c.archive()
 
 
     def clear(self):
-        c.hi()
+        print("TODO: View.clear()")
 
 
     def confirm(self):
-        c.hi()
+        print("TODO: View.confirm()")
 
 
     def cancel(self):
-        c.hi()
+        print("TODO: View.cancel()")

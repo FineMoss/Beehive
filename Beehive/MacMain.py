@@ -6,8 +6,8 @@ import tkinter as tk
 import View    as v
 
 
-
-if __name__ == "__main__":
+# the main method
+def main():
 
     # initialize the app
     root = tk.Tk()
@@ -21,7 +21,14 @@ if __name__ == "__main__":
     app.master.maxsize(900, 488)
 
     # set the icon of the app
-    app.master.iconbitmap("flower.ico")
+    app.master.iconbitmap("../flower.ico")
 
     # run the app
     app.mainloop()
+
+
+# prevent import of MacMain.py
+if __name__ == "__main__":
+    main()
+else:
+    print("ERROR: MacMain.py is being imported")
