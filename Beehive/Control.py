@@ -6,16 +6,16 @@ class Control():
 
 
     def __init__(self, frame):
-        self.frame = frame
+        self.__frame = frame
 
 
     def clear(self):
-        self.frame.current_entry.delete("0", "end")
-        self.frame.target_entry.delete("0", "end")
-        self.frame.date_entry.delete("0", "end")
-        self.frame.text_field["state"] = "normal"
-        self.frame.text_field.delete("1.0", "end")
-        self.frame.text_field["state"] = "disabled"
+        self.__frame.current_entry.delete("0", "end")
+        self.__frame.target_entry.delete("0", "end")
+        self.__frame.date_entry.delete("0", "end")
+        self.__frame.text_field["state"] = "normal"
+        self.__frame.text_field.delete("1.0", "end")
+        self.__frame.text_field["state"] = "disabled"
 
 
     def cancel(self):
