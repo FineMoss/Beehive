@@ -1,9 +1,9 @@
-# Beehive
+# TODO
+# Beehive v2.0
 File Archive Application  
 UI with tkinter  
-Developed and tested with Python 3.6.2  
+Developed and tested with Python 3.7  
 UI works cross-platform  
-Logic only works with windows (for now)  
 
 This program will create a Reports folder where it keeps track of all past archive events  
 
