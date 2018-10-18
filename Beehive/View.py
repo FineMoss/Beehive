@@ -12,10 +12,11 @@ class Application(Frame):
     def __init__(self, master=None):
         super().__init__(master)
         self.grid()
-        self.create_widgets()
+        self.__control = c.Control(self)
+        self.__create_widgets()
 
     # generates the widgets
-    def create_widgets(self):
+    def __create_widgets(self):
 
         # buttons
 
@@ -28,25 +29,25 @@ class Application(Frame):
         # archive button
         self.archive_button               = Button(self)
         self.archive_button["text"]       = "Run Archive Report"
-        self.archive_button["command"]    = self.archive
+        self.archive_button["command"]    = self.__control.archive
 
         # clear all button
         self.clear_button                 = Button(self)
         self.clear_button["text"]         = "Clear All Fields"
-        self.clear_button["command"]      = self.clear
+        self.clear_button["command"]      = self.__control.clear
 
         # confirm button
         self.confirm_button               = Button(self)
         self.confirm_button["text"]       = "Confirm Archive"
         self.confirm_button["fg"]         = "green"
-        self.confirm_button["command"]    = self.confirm
+        self.confirm_button["command"]    = self.__control.confirm
         self.confirm_button["state"]      = "disable"
 
         # cancel button
         self.cancel_button                = Button(self)
         self.cancel_button["text"]        = "Cancel Archive"
         self.cancel_button["fg"]          = "red"
-        self.cancel_button["command"]     = self.cancel
+        self.cancel_button["command"]     = self.__control.cancel
         self.cancel_button["state"]       = "disabled"
 
         # entries
@@ -70,7 +71,6 @@ class Application(Frame):
         self.current_label["text"]        = "Folder to be Archived"
         self.current_label["pady"]        = 5
 
-
         # archive label
         self.target_label                 = Label(self)
         self.target_label["text"]         = "Archive To This Location"
@@ -87,7 +87,6 @@ class Application(Frame):
         self.text_field["padx"]           = 5
         self.text_field["yscrollcommand"] = True
         self.text_field["state"]          = "disabled"
-
 
         # organize the grid
 
@@ -110,25 +109,3 @@ class Application(Frame):
 
         # text field
         self.text_field.grid(row = 0, column = 2, rowspan = 30, sticky = W+E+N+S)
-
-
-
-    def archive(self):
-        c.archive()
-
-
-    def clear(self):
-        self.current_entry.delete("0", "end")
-        self.target_entry.delete("0", "end")
-        self.date_entry.delete("0", "end")
-        self.text_field["state"] = "normal"
-        self.text_field.delete("1.0", "end")
-        self.text_field["state"] = "disabled"
-
-
-    def confirm(self):
-        print("TODO: View.confirm()")
-
-
-    def cancel(self):
-        print("TODO: View.cancel()")
