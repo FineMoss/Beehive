@@ -2,29 +2,31 @@
 # Created by Jake Stephens
 
 
-import tkinter as tk
-import View    as v
+from   tkinter import *
+import View    as V
+import Control as C
 
 
 # the main method
 def main():
 
     # initialize the app
-    root = tk.Tk()
-    app = v.Application(master=root)
+    root    = Tk()
+    view    = V.Application(master=root)
+    control = C.Control(view)
 
     # set the title of the app
-    app.master.title("Beehive Version 2.0")
+    view.master.title("Beehive Version 2.0")
 
     # set the window size of the app
-    app.master.minsize(900, 488)
-    app.master.maxsize(900, 488)
+    view.master.minsize(900, 488)
+    view.master.maxsize(900, 488)
 
     # set the icon of the app
-    app.master.iconbitmap("../flower.ico")
+    view.master.iconbitmap("../flower.ico")
 
     # run the app
-    app.mainloop()
+    view.mainloop()
 
 
 # prevent import of MacMain.py
