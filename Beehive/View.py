@@ -5,7 +5,7 @@
 from tkinter import *
 
 
-class Application(Frame):
+class View(Frame):
 
     # initializes the window
     def __init__(self, master=None):

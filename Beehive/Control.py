@@ -6,8 +6,12 @@ class Control():
 
 
     def __init__(self, model, view):
-        self.__model                          = model
-        self.__view                           = view
+        self.__model = model
+        self.__view  = view
+        self.__map_buttons()
+
+
+    def __map_buttons(self):
         self.__view.archive_button["command"] = self.archive
         self.__view.clear_button["command"]   = self.clear
         self.__view.confirm_button["command"] = self.confirm

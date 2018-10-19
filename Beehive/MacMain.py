@@ -14,7 +14,7 @@ def main():
     # initialize the app
     root    = Tk()
     model   = M.Model()
-    view    = V.Application(master=root)
+    view    = V.View(master=root)
     control = C.Control(model, view)
 
     # set the title of the app
