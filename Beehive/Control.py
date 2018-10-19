@@ -6,7 +6,11 @@ class Control():
 
 
     def __init__(self, frame):
-        self.__frame = frame
+        self.__frame                           = frame
+        self.__frame.archive_button["command"] = self.archive
+        self.__frame.clear_button["command"]   = self.clear
+        self.__frame.confirm_button["command"] = self.confirm
+        self.__frame.cancel_button["command"]  = self.cancel
 
 
     def archive(self):
