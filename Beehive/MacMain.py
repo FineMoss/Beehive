@@ -3,6 +3,7 @@
 
 
 from   tkinter import *
+import Model   as M
 import View    as V
 import Control as C
 
@@ -12,8 +13,9 @@ def main():
 
     # initialize the app
     root    = Tk()
+    model   = M.Model()
     view    = V.Application(master=root)
-    control = C.Control(view)
+    control = C.Control(model, view)
 
     # set the title of the app
     view.master.title("Beehive Version 2.0")
