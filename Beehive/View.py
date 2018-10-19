@@ -20,12 +20,6 @@ class Application(Frame):
 
         # buttons
 
-        # quit button
-        self.quit_button                  = Button(self)
-        self.quit_button["text"]          = "QUIT"
-        self.quit_button["bg"]            = "red"
-        self.quit_button["command"]       = self.quit
-
         # archive button
         self.archive_button               = Button(self)
         self.archive_button["text"]       = "Run Archive Report"
@@ -91,7 +85,6 @@ class Application(Frame):
         # organize the grid
 
         # buttons
-        self.quit_button.grid(row = 8, column = 0, columnspan = 2)
         self.archive_button.grid(row = 6, column = 0)
         self.clear_button.grid(row = 6, column = 1)
         self.cancel_button.grid(row = 7, column = 1)
