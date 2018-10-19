@@ -2,8 +2,7 @@
 # Created by Jake Stephens
 
 
-from   tkinter import *
-import Control as c
+from tkinter import *
 
 
 class Application(Frame):
@@ -12,7 +11,6 @@ class Application(Frame):
     def __init__(self, master=None):
         super().__init__(master)
         self.grid()
-        self.__control = c.Control(self)
         self.__create_widgets()
 
     # generates the widgets
@@ -23,25 +21,21 @@ class Application(Frame):
         # archive button
         self.archive_button               = Button(self)
         self.archive_button["text"]       = "Run Archive Report"
-        self.archive_button["command"]    = self.__control.archive
 
         # clear all button
         self.clear_button                 = Button(self)
         self.clear_button["text"]         = "Clear All Fields"
-        self.clear_button["command"]      = self.__control.clear
 
         # confirm button
         self.confirm_button               = Button(self)
         self.confirm_button["text"]       = "Confirm Archive"
         self.confirm_button["fg"]         = "green"
-        self.confirm_button["command"]    = self.__control.confirm
         self.confirm_button["state"]      = "disable"
 
         # cancel button
         self.cancel_button                = Button(self)
         self.cancel_button["text"]        = "Cancel Archive"
         self.cancel_button["fg"]          = "red"
-        self.cancel_button["command"]     = self.__control.cancel
         self.cancel_button["state"]       = "disabled"
 
         # entries
