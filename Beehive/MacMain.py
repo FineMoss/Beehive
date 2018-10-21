@@ -13,7 +13,7 @@ def main():
 
     # initialize the app
     root    = Tk()
-    model   = M.Model()
+    model   = M.Model(reports_dir=".beehive_reports")
     view    = V.View(master=root)
     control = C.Control(model, view)
 
