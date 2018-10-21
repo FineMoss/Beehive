@@ -7,7 +7,7 @@ from tkinter import *
 
 class View(Frame):
 
-    # initializes the window
+    # initializes the view
     def __init__(self, master=None):
         super().__init__(master)
         self.grid()
@@ -16,7 +16,7 @@ class View(Frame):
     # generates the widgets
     def __create_widgets(self):
 
-        # buttons
+        # create buttons
 
         # archive button
         self.archive_button               = Button(self)
@@ -38,7 +38,7 @@ class View(Frame):
         self.cancel_button["fg"]          = "red"
         self.cancel_button["state"]       = "disabled"
 
-        # entries
+        # create entries
 
         # target entry 
         self.current_entry                = Entry(self)
@@ -52,7 +52,7 @@ class View(Frame):
         self.date_entry                   = Entry(self)
         self.date_entry["width"]          = 10
 
-        # labels
+        # create labels
 
         # target label
         self.current_label                = Label(self)
@@ -69,6 +69,8 @@ class View(Frame):
         self.date_label["text"]           = "Enter a Date (MM/DD/YYYY)"
         self.date_label["pady"]           = 5
 
+        # create text field
+
         # text field
         self.text_field                   = Text(self)
         self.text_field["height"]         = 30
@@ -84,7 +86,7 @@ class View(Frame):
         self.cancel_button.grid(row = 7, column = 1)
         self.confirm_button.grid(row = 7, column = 0)
 
-        #entries
+        # entries
         self.current_entry.grid(row = 1, column = 0, columnspan = 2)
         self.target_entry.grid(row = 3, column = 0, columnspan = 2)
         self.date_entry.grid(row = 5, column = 0, columnspan = 2)
