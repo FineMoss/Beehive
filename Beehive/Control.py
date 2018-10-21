@@ -4,37 +4,37 @@
 
 class Control():
 
-
+    # create reference to the model and the view
     def __init__(self, model, view):
         self.__model = model
         self.__view  = view
         self.__map_buttons()
 
-
+    # maps the buttons to the commands
     def __map_buttons(self):
-        self.__view.archive_button["command"] = self.archive
-        self.__view.clear_button["command"]   = self.clear
-        self.__view.confirm_button["command"] = self.confirm
-        self.__view.cancel_button["command"]  = self.cancel
+        self.__view.archive_button["command"] = self.__archive
+        self.__view.clear_button["command"]   = self.__clear
+        self.__view.confirm_button["command"] = self.__confirm
+        self.__view.cancel_button["command"]  = self.__cancel
 
-
-    def archive(self):
+    # command for archive button
+    def __archive(self):
         print("TODO: Control.archive()")
 
-
-    def confirm(self):
+    # command for confirm button
+    def __confirm(self):
         print("TODO: Control.confirm()")
 
-
-    def cancel(self):
+    # command for cancel button
+    def __cancel(self):
         self.__view.text_field["state"] = "normal"
         self.__view.text_field.delete("1.0", "end")
         self.__view.text_field["state"] = "disabled"
-        self.unlock_fields()
+        self.__unlock_fields()
         print("MORE TODO: Control.cancel()")
 
-
-    def clear(self):
+    # command for clear button
+    def __clear(self):
         self.__view.current_entry.delete("0", "end")
         self.__view.target_entry.delete("0", "end")
         self.__view.date_entry.delete("0", "end")
@@ -42,7 +42,7 @@ class Control():
         self.__view.text_field.delete("1.0", "end")
         self.__view.text_field["state"] = "disabled"
 
-
+    # helper function
     def __lock_fields(self):
         self.__view.current_entry["state"]  = "disabled"
         self.__view.target_entry["state"]   = "disabled"
@@ -52,7 +52,7 @@ class Control():
         self.__view.confirm_button["state"] = "normal"
         self.__view.cancel_button["state"]  = "normal"
 
-
+    # helper fuction
     def __unlock_fields(self):
         self.__view.current_entry["state"]  = "normal"
         self.__view.target_entry["state"]   = "normal"
