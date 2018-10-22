@@ -20,10 +20,16 @@ class Control():
     # command for archive button
     def __archive(self):
         print("TODO: Control.archive()")
+        source_dir  = str(self.__view.current_entry.get())
+        # TODO add name to report
+        report_path = self.__model.run_report(source_dir)
+        self.__update_text_field(report_path)
+        self.__lock_fields()
 
     # command for confirm button
     def __confirm(self):
         print("TODO: Control.confirm()")
+        self.__unlock_fields()
 
     # command for cancel button
     def __cancel(self):
@@ -41,6 +47,13 @@ class Control():
         self.__view.text_field["state"] = "normal"
         self.__view.text_field.delete("1.0", "end")
         self.__view.text_field["state"] = "disabled"
+
+    def __update_text_field(self, report_path):
+        with open(report_path) as report:
+            self.__view.text_field["state"] = "normal"
+            self.__view.text_field.delete("1.0", "end")
+            self.__view.text_field.insert("1.0", report.read())
+            self.__view.text_field["state"] = "disabled"
 
     # helper function
     def __lock_fields(self):
