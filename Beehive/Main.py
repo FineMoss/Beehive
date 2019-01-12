@@ -33,8 +33,8 @@ def main():
     view.mainloop()
 
 
-# MacMain.py should only be run as "__main__"
+# Main.py should only be run as "__main__"
 if __name__ == "__main__":
     main()
 else:
-    print("ERROR: MacMain.py is not running as "'__main__'" ")
+    print("ERROR: Main.py is not running as "'__main__'" ")
