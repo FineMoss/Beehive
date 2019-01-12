@@ -3,7 +3,6 @@ Created by Jake Stephens
 File Archive Application  
 Cross platform tkinter user interface
 Developed and tested with Python 3.7 and MacOS Mojave
-
 Run Main.py with python to launch the application
 
 This version allows the user to select a directory that they wish to archive, and a directory that the archived files will move to. The program will preserve the entire directory tree in the source directory and in the target directory. First, a report will be generated letting the user know what files are about to be archived. Then the user can decide if they want to proceed with the archive or cancel. The only way to filter files is with the date of last modification. More filtering options will be available in newer versions. A hidden reports directory will be created and reports will be added each time a report is ran. These reports will eventually be used to “undo” an archive event.
