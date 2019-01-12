@@ -1,7 +1,7 @@
 
 # Created by Jake Stephens
 
-
+# only import what is needed from tkinter
 from tkinter import *
 
 
@@ -74,6 +74,7 @@ class View(Frame):
         # text field
         self.text_field                   = Text(self)
         self.text_field["height"]         = 30
+        self.text_field["width"]          = 83
         self.text_field["padx"]           = 5
         self.text_field["yscrollcommand"] = True
         self.text_field["state"]          = "disabled"

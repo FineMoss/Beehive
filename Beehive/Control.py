@@ -19,16 +19,23 @@ class Control():
 
     # command for archive button
     def __archive(self):
-        print("TODO: Control.archive()")
         source_dir  = str(self.__view.current_entry.get())
+        conditions = self.__get_conditions()
+        
         # TODO add name to report
-        report_path = self.__model.run_report(source_dir)
-        self.__update_text_field(report_path)
+        self.report_path = self.__model.run_report(source_dir, conditions=conditions)
+        self.__update_text_field()
         self.__lock_fields()
+
+    # helper for __archive()
+    def __get_conditions(self):
+        # TODO add more conditions
+        return {str(self.__view.date_entry.get()) : self.__model.date_condition}
 
     # command for confirm button
     def __confirm(self):
-        print("TODO: Control.confirm()")
+        destination_dir = str(self.__view.target_entry.get())
+        self.__model.move_files(self.report_path, destination_dir)
         self.__unlock_fields()
 
     # command for cancel button
@@ -37,7 +44,6 @@ class Control():
         self.__view.text_field.delete("1.0", "end")
         self.__view.text_field["state"] = "disabled"
         self.__unlock_fields()
-        print("MORE TODO: Control.cancel()")
 
     # command for clear button
     def __clear(self):
@@ -48,8 +54,9 @@ class Control():
         self.__view.text_field.delete("1.0", "end")
         self.__view.text_field["state"] = "disabled"
 
-    def __update_text_field(self, report_path):
-        with open(report_path) as report:
+    def __update_text_field(self):
+        # TODO make sure path exist
+        with open(self.report_path, "r") as report:
             self.__view.text_field["state"] = "normal"
             self.__view.text_field.delete("1.0", "end")
             self.__view.text_field.insert("1.0", report.read())

@@ -1,7 +1,7 @@
 
 # Created by Jake Stephens
 
-
+# only import what is needed
 from   tkinter import *
 import Model   as M
 import View    as V
@@ -21,18 +21,20 @@ def main():
     view.master.title("Beehive Version 2.0")
 
     # set the window size of the app
-    view.master.minsize(900, 488)
-    view.master.maxsize(900, 488)
+    view.master.minsize(976, 488)
+    view.master.maxsize(976, 488)
 
     # set the icon of the app
-    view.master.iconbitmap("../flower.ico")
+    # TODO catch no file errors
+    img = Image("photo", file="../icons/beehive_icon.png")
+    root.iconphoto(True, img)
 
     # run the app
     view.mainloop()
 
 
-# prevent import of MacMain.py
+# MacMain.py should only be run as "__main__"
 if __name__ == "__main__":
     main()
 else:
-    print("ERROR: MacMain.py is being imported")
+    print("ERROR: MacMain.py is not running as "'__main__'" ")
